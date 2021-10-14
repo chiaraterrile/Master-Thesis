@@ -9,15 +9,13 @@ OK
 o_getStatus_ki_ab
 o_getStatus_ki_run
 OK
-o_level_low
 OK
 o_isAt_ch_not
+o_level_low
 OK
 o_level_normal
 OK
 o_batteryStatus_true
-OK
-o_isAt_ch_not
 OK
 o_isAt_ch_run
 OK
@@ -39,6 +37,6 @@ OK
 o_getStatus_ki_ab
 o_getStatus_ki_run
 OK
-o_getStatus_ki_suc
 OK
+o_getStatus_ki_suc
 o_isAt_ki_run

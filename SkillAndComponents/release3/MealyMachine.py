@@ -72,9 +72,13 @@ x = f.read()
 
 mealy = eval(x)
 
-f = open('input_machine.txt', 'r')
+f = open('Input.txt', 'r')
 x = f.read()
 input_list = list(x.split("\n"))
+
+if input_list[len(input_list)-1] == '':
+    input_list = input_list[:-1]
+
 output_list = mealy.get_output_from_string(input_list)
 
 with open("output_machine.txt", "w") as text_file:

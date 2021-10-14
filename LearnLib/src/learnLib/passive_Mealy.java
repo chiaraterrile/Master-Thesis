@@ -71,27 +71,63 @@ public final class passive_Mealy {
     
     private static Collection < ? extends DefaultQuery<String, Word<String>>> get_traces() throws IOException  {
     	
-    	Scanner s = new Scanner(new File("input_release3_reduced.txt"));
+    	List<Scanner> s = new ArrayList<Scanner>();
+    	List<Scanner> s1 = new ArrayList<Scanner>();
+    	
+    	List <ArrayList<String>> input_pre = new ArrayList<ArrayList<String>>();
+    	List<ArrayList<String>> output = new ArrayList<ArrayList<String>>();
+    	
+    	for (int i = 0; i < 6; i++) {
+    		
+    		s.add(i,new Scanner(new File("simulator/input_simulator_nominal"+(i+1)+".txt")));
+    		ArrayList<String> input_list = new ArrayList<String>();
+    		while (s.get(i).hasNext()){
+        		
+        		input_list.add(s.get(i).next());
+        		input_pre.add(i,input_list);
+        	}
+        	s.get(i).close();
+        	
+        	
+        	s1.add(new Scanner(new File("simulator/output_simulator_nominal"+(i+1)+".txt")));
+        	ArrayList<String> output_list = new ArrayList<String>();
+        	while (s1.get(i).hasNext()){
+        		
+        		output_list.add(s1.get(i).next());
+        		output.add(i,output_list);
+        	}
+        	s1.get(i).close();
+    		
+    	}
+    	
+    	
+    	
+    	return Arrays.asList( new DefaultQuery<>(Word.fromList(input_pre.get(0)),Word.fromSymbols("Delta"),Word.fromList(output.get(0))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(1)),Word.fromSymbols("Delta"),Word.fromList(output.get(1))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(2)),Word.fromSymbols("Delta"),Word.fromList(output.get(2))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(3)),Word.fromSymbols("Delta"),Word.fromList(output.get(3))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(4)),Word.fromSymbols("Delta"),Word.fromList(output.get(4))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(5)),Word.fromSymbols("Delta"),Word.fromList(output.get(5)))
+    			
+    			
+    			
+    			);
+    	
+    	/*
+    	Scanner s = new Scanner(new File("simulator/input_simulator_nominal.txt"));
     	ArrayList<String> input_pre = new ArrayList<String>();
     	while (s.hasNext()){
     	    input_pre.add(s.next());
     	}
     	s.close();
     	
-    	Scanner s2 = new Scanner(new File("output_release3_reduced.txt"));
+    	Scanner s2 = new Scanner(new File("simulator/output_simulator_nominal.txt"));
     	ArrayList<String> output = new ArrayList<String>();
     	while (s2.hasNext()){
     	    output.add(s2.next());
     	}
     	s2.close();
-    
-    
-    		
-    	return Arrays.asList(
-    			
-    			new DefaultQuery<>(Word.fromList(input_pre),Word.fromSymbols("Delta"),Word.fromList(output))
-    			
-    			);
+    	*/
     }
 
     /**

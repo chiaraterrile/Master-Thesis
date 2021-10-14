@@ -9,8 +9,8 @@ getStatus_ki_i
 Delta
 Delta
 level_i
-Delta
 isAt_ch_i
+Delta
 Delta
 level_i
 Delta
@@ -30,8 +30,6 @@ isAt_ch_i
 Delta
 isAt_ch_i
 Delta
-isAt_ch_i
-Delta
 batteryStatus_i
 Delta
 getStatus_ki_i
@@ -39,6 +37,5 @@ getStatus_ki_i
 Delta
 Delta
 getStatus_ki_i
-Delta
 isAt_ki_i
 Delta

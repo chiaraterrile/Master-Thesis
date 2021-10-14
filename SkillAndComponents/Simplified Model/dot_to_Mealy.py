@@ -73,7 +73,6 @@ input_lines = RemoveEmptyLines(input_lines)
 input_lines = Convert(input_lines)
 input_lines = input_lines[:-1]
 new_input_lines = list(dict.fromkeys(input_lines))
-
 output_lines = RemoveEmptyLines(output_lines)
 output_lines = Convert(output_lines)
 output_lines = output_lines[:-1]
@@ -105,6 +104,7 @@ next_state = RemoveEmptyLines(next_state)
 next_state = Convert(next_state)
 start_state = next_state[len(next_state)-2]
 next_state = next_state[:-3]
+
 
 i = 0
 while i < (len(prec_state)-1) :
