@@ -38,18 +38,47 @@ import net.automatalib.visualization.Visualization;
 import net.automatalib.words.impl.Alphabets;
 
 
-public final class passive_Mealy {
+public final class passive_Mealy_simulationA {
 
-    private passive_Mealy() {
+    private passive_Mealy_simulationA() {
         // prevent instantiation
     }
 
     public static void main(String[] args) throws IOException {
 
         // define the alphabet
-    	Alphabet<String> alphabet = Alphabets.fromArray("Delta","goTo_ki_i","level_i","getStatus_ki_i","halt_ki_i","goTo_ch_i","getStatus_ch_i","batteryStatus_i","isAt_ki_i","isAt_ch_i","halt_ch_i");
-
-    	
+    /*
+    	Alphabet<String> alphabet = Alphabets.fromArray("Delta_goto_ki",
+    			"Delta_getStatus_ki_run",
+    			"Delta_getStatus_ki_suc",
+    			"Delta_getStatus_ki_ab",
+    			"Delta_halt_ki",
+    			"Delta_goto_ch",
+    			"Delta_getStatus_ch_run",
+    			"Delta_getStatus_ch_suc",
+    			"Delta_getStatus_ch_ab",
+    			"Delta_batteyStatus_false",
+    			"Delta_batteyStatus_true",
+    			"Delta_isAt_ki_false",
+    			"Delta_isAt_ki_true",
+    			"Delta_isAt_ch_false",
+    			"Delta_isAt_ch_true",
+    			"Delta_halt_ch",
+    			"Delta_level_high",
+    			"Delta_level_medium",
+    			"Delta_level_low",
+    			"level_i",
+    			"getStatus_ki_i",
+    			"halt_ki_i",
+    			"goTo_ki_i",
+    			"goTo_ch_i",
+    			"getStatus_ch_i",
+    			"batteryStatus_i",
+    			"isAt_ki_i",
+    			"isAt_ch_i",
+    			"halt_ch_i");
+*/
+         Alphabet<String> alphabet = Alphabets.fromArray("Delta","goTo_ki_i","level_i","getStatus_ki_i","halt_ki_i","goTo_ch_i","getStatus_ch_i","batteryStatus_i","isAt_ki_i","isAt_ch_i","halt_ch_i");
 
         // if no training samples have been provided, only the empty automaton can be constructed
         final MealyMachine<?, String, ?, String> emptyModel = computeModel(alphabet, Collections.emptyList());;
@@ -77,9 +106,9 @@ public final class passive_Mealy {
     	List <ArrayList<String>> input_pre = new ArrayList<ArrayList<String>>();
     	List<ArrayList<String>> output = new ArrayList<ArrayList<String>>();
     	
-    	for (int i = 0; i < 6; i++) {
+    	for (int i = 0; i < 4; i++) {
     		
-    		s.add(i,new Scanner(new File("simulator/input_simulator_nominal"+(i+1)+".txt")));
+    		s.add(i,new Scanner(new File("simulatorA/input_simulator_nominal"+(i+1)+".txt")));
     		ArrayList<String> input_list = new ArrayList<String>();
     		while (s.get(i).hasNext()){
         		
@@ -89,7 +118,7 @@ public final class passive_Mealy {
         	s.get(i).close();
         	
         	
-        	s1.add(new Scanner(new File("simulator/output_simulator_nominal"+(i+1)+".txt")));
+        	s1.add(new Scanner(new File("simulatorA/output_simulator_nominal"+(i+1)+".txt")));
         	ArrayList<String> output_list = new ArrayList<String>();
         	while (s1.get(i).hasNext()){
         		
@@ -105,10 +134,10 @@ public final class passive_Mealy {
     	return Arrays.asList( new DefaultQuery<>(Word.fromList(input_pre.get(0)),Word.fromSymbols("Delta"),Word.fromList(output.get(0))),
     			new DefaultQuery<>(Word.fromList(input_pre.get(1)),Word.fromSymbols("Delta"),Word.fromList(output.get(1))),
     			new DefaultQuery<>(Word.fromList(input_pre.get(2)),Word.fromSymbols("Delta"),Word.fromList(output.get(2))),
-    			new DefaultQuery<>(Word.fromList(input_pre.get(3)),Word.fromSymbols("Delta"),Word.fromList(output.get(3))),
-    			new DefaultQuery<>(Word.fromList(input_pre.get(4)),Word.fromSymbols("Delta"),Word.fromList(output.get(4))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(3)),Word.fromSymbols("Delta"),Word.fromList(output.get(3)))
+    			/*new DefaultQuery<>(Word.fromList(input_pre.get(4)),Word.fromSymbols("Delta"),Word.fromList(output.get(4))),
     			new DefaultQuery<>(Word.fromList(input_pre.get(5)),Word.fromSymbols("Delta"),Word.fromList(output.get(5)))
-    			
+    			*/
     			
     			
     			);

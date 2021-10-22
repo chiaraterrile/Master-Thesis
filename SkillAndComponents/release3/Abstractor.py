@@ -12,11 +12,11 @@ q2 = Query(input = "getStatus_ki_input",output=("output_getStatus_ki_ab","output
 
 q3 = Query(input = "halt_ki_input",output="output_halt_ki",last = "None")
 
-q4 = Query(input = "isAt_ki_input",output=("output_isAt_ki_not","output_isAt_ki_run"),last = "None")
+q4 = Query(input = "isAt_ki_input",output=("output_isAt_ki_false","output_isAt_ki_true"),last = "None")
 
 q5 = Query(input = "batteryStatus_input",output=("output_batteryStatus_false","output_batteryStatus_true"),last = "None")
 
-q6 = Query(input = "level_input",output=("output_level_normal","output_level_low"),last = "None")
+q6 = Query(input = "level_input",output=("output_level_low","output_level_medium","output_level_high","output_level_zero"),last = "None")
 
 q7 = Query(input = "goTo_ch_input",output="output_goto_ch",last = "None")
 
@@ -24,7 +24,7 @@ q8 = Query(input = "getStatus_ch_input",output=("output_getStatus_ch_ab","output
 
 q9 = Query(input = "halt_ch_input",output="output_halt_ch",last = "None")
 
-q10 = Query(input = "isAt_ch_input",output=("output_isAt_ch_not","output_isAt_ch_run"),last = "None")
+q10 = Query(input = "isAt_ch_input",output=("output_isAt_ch_false","output_isAt_ch_true"),last = "None")
 
 
 f = open('Traces.txt', 'r')
@@ -32,7 +32,6 @@ content = f.read()
 f.close()
 
 log = Convert(content)
-print(log)
 
 indexes = []
 flag = False
@@ -73,7 +72,7 @@ for i in range(0,len(log)):
             if log[j] == q9.output and q9.output != q9.last :
                 indexes.append(index_temp)
                 indexes.append(j)
-                q9.last = q3.output
+                q9.last = q9.output
                 q7.last = "None"
                 q8.last = "None"
     
@@ -131,11 +130,9 @@ for i in range(0,len(log)):
     if log[i] == q6.input :
             flag = False
             index_temp = i
-            print('ok')
-            for j in range (i+1,len(log)) :
+            for j in range (i,len(log)) :
                 for h in range (0,len(q6.output)) :
                     if log[j] == q6.output[h] and q6.output[h] != q6.last :
-                        print('trovato')
                         indexes.append(index_temp)
                         indexes.append(j)
                         q6.last = q6.output[h]

@@ -4,8 +4,10 @@ batteryStatus_i
 Delta
 isAt_ki_i
 Delta
+goTo_ki_i
 getStatus_ki_i
 getStatus_ki_i
+Delta
 Delta
 Delta
 getStatus_ki_i

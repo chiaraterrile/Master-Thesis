@@ -35,6 +35,7 @@ x = x.replace("From      : /BatteryLevel/BT_rpc/client\nTo        : /BatteryLeve
 x = x.replace("From      : /GoToDestination/BT_rpc/client\nTo        : /GoToDestination/BT_rpc/server\nProtocol  : Skill_request\nCommand   : request_ack\nArguments : \nReply     : ", " ")
 x = x.replace("From      : /BatteryLevel/BT_rpc/client\nTo        : /BatteryLevel/BT_rpc/server\nProtocol  : Skill_request\nCommand   : send_start\nArguments : \nReply     : ", " ")
 x = x.replace("From      : /GoToDestination/BT_rpc/client\nTo        : /GoToDestination/BT_rpc/server\nCommand   : Skill_request\nArguments : request_ack\nReply     : ", " ")
+x = x.replace("From      : /GoToDestination/BT_rpc/server\nTo        : /GoToDestination/BT_rpc/client\nProtocol  : Skill_request\nCommand   : request_ack\nArguments : \nReply     : 0", " ")
 x = x.replace("From      : /GoToDestination/BT_rpc/server\nTo        : /GoToDestination/BT_rpc/client\nProtocol  : Skill_request\nCommand   : send_start\nArguments : \nReply     : ", " ")
 x = x.replace("From      : /GoToDestination/BT_rpc/server\nTo        : /GoToDestination/BT_rpc/client\nProtocol  : Skill_request\nCommand   : request_ack\nArguments : \nReply     : 1", " ")
 x = x.replace("From      : /GoToDestination/BT_rpc/client\nTo        : /GoToDestination/BT_rpc/server\nProtocol  : Skill_request\nCommand   : send_stop\nArguments : \nReply     : ", " ")
@@ -46,6 +47,7 @@ x = x.replace("From      : /GoToChargingStation/BT_rpc/server\nTo        : /GoTo
 x = x.replace("From      : /GoToChargingStation/BT_rpc/client\nTo        : /GoToChargingStation/BT_rpc/server\nProtocol  : Skill_request\nCommand   : request_ack\nArguments : \nReply     :", " ")
 x = x.replace("From     : /GoToChargingStation/BT_rpc/server\nTo       : /GoToChargingStation/BT_rpc/client\nReply    : request_ack\nArguments: 0", " ")
 x = x.replace("From      : /GoToChargingStation/BT_rpc/server\nTo        : /GoToChargingStation/BT_rpc/client\nProtocol  : Skill_request\nCommand   : send_start\nArguments : \nReply     :", " ")
+x = x.replace("From      : /GoToDestination/BT_rpc/client\nTo        : /GoToDestination/BT_rpc/server\nProtocol  : Skill_request\nCommand   : send_start\nArguments : \nReply     : ", " ")
 x = x.replace("From      : /tick/monitor\nTo        : /monitor\nProtocol  : Tick\nCommand   : \nArguments : ", " ")
 
 
@@ -74,10 +76,10 @@ x = x.replace("From      : /GoToComponent\nTo        : /GoToGoToClient/charging_
 x = x.replace("From      : /GoToComponent\nTo        : /GoToGoToClient/charging_station\nProtocol  : GoTo\nCommand   : getStatus\nArguments : charging_station\nReply     : 3", "output_getStatus_ch_ab\n")
 x = x.replace("From      : /BatteryComponent\nTo        : /BatteryReaderBatteryNotChargingClient\nProtocol  : BatteryReader\nCommand   : charging_status\nArguments : \nReply     : 0", "output_batteryStatus_false\n")
 x = x.replace("From     : /BatteryComponent\nTo       : /BatteryReaderBatteryNotChargingClient\nReply    : charging_status\nArguments: 1", "output_batteryStatus_true")
-x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/kitchen\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : kitchen\nReply     : 1818845542", "output_isAt_ki_not\n")
-x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/kitchen\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : kitchen\nReply     : 27503", "output_isAt_ki_run\n")
-x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/charging_station\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : charging_station\nReply     : 1818845542", "output_isAt_ch_not\n")
-x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/charging_station\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : charging_station\nReply     : 27503", "output_isAt_ch_run\n")
+x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/kitchen\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : kitchen\nReply     : 1818845542", "output_isAt_ki_false\n")
+x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/kitchen\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : kitchen\nReply     : 27503", "output_isAt_ki_true\n")
+x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/charging_station\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : charging_station\nReply     : 1818845542", "output_isAt_ch_false\n")
+x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/charging_station\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : charging_station\nReply     : 27503", "output_isAt_ch_true\n")
 
 #remove "DEBUG		Message received:" message
 x = x.replace("DEBUG", " ")
@@ -104,9 +106,13 @@ for line in x.splitlines():
 
 for i in range(0, len(arr)):
     if int(arr[i])>30 :
-        arr[i]= 'normal'
-    elif 1<int(arr[i])<30 :
+        arr[i]= 'high'
+    elif 20<int(arr[i])<30 :
+        arr[i]= 'medium'
+    elif 1<int(arr[i])<20 :
         arr[i]= 'low'
+    elif int(arr[i]) == 0 :
+        arr[i]= 'zero'
 print(arr)
 
 for i in range(counter_level):

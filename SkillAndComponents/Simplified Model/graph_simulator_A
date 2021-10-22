@@ -1,0 +1,46 @@
+digraph g {
+
+	s0 [shape="circle" label="0"];
+	s1 [shape="circle" label="1"];
+	s2 [shape="circle" label="2"];
+	s3 [shape="circle" label="3"];
+	s4 [shape="circle" label="4"];
+	s5 [shape="circle" label="5"];
+	s6 [shape="circle" label="6"];
+	s7 [shape="circle" label="7"];
+	s8 [shape="circle" label="8"];
+	s9 [shape="circle" label="9"];
+	s10 [shape="circle" label="10"];
+	s11 [shape="circle" label="11"];
+	s0 -> s10 [label="Delta / o_halt_ki"];
+	s1 -> s3 [label="Delta / o_getStatus_ki_suc"];
+	s2 -> s8 [label="Delta / o_getStatus_ki_run"];
+	s3 -> s9 [label="Delta / o_isAt_ki_true"];
+	s4 -> s10 [label="Delta / o_goto_ki"];
+	s4 -> s7 [label="getStatus_ki_i / OK"];
+	s5 -> s10 [label="Delta / o_isAt_ki_false"];
+	s5 -> s2 [label="getStatus_ki_i / OK"];
+	s6 -> s5 [label="Delta / o_getStatus_ki_ab"];
+	s6 -> s8 [label="getStatus_ki_i / OK"];
+	s7 -> s10 [label="Delta / o_batteryStatus_false"];
+	s7 -> s11 [label="getStatus_ki_i / OK"];
+	s7 -> s3 [label="isAt_ki_i / OK"];
+	s8 -> s2 [label="Delta / o_getStatus_ki_ab"];
+	s8 -> s9 [label="getStatus_ki_i / OK"];
+	s8 -> s11 [label="isAt_ki_i / OK"];
+	s9 -> s7 [label="Delta / o_getStatus_ki_suc"];
+	s9 -> s0 [label="halt_ki_i / OK"];
+	s9 -> s1 [label="isAt_ki_i / OK"];
+	s10 -> s10 [label="Delta / o_level_high"];
+	s10 -> s4 [label="goTo_ki_i / OK"];
+	s10 -> s10 [label="level_i / OK"];
+	s10 -> s6 [label="getStatus_ki_i / OK"];
+	s10 -> s7 [label="batteryStatus_i / OK"];
+	s10 -> s5 [label="isAt_ki_i / OK"];
+	s11 -> s8 [label="Delta / o_goto_ki"];
+	s11 -> s3 [label="getStatus_ki_i / OK"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s10;
+
+}

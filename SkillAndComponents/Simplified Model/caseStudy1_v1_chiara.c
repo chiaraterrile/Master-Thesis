@@ -788,7 +788,7 @@ typedef enum
 	DESTINATION_REACHED = 4,
 	STOPPING = 5
 } componentStatus;
-static componentStatus currentCompState = INIT_SIMULATOR;
+// static componentStatus currentCompState = INIT_SIMULATOR;
 
 //shared variables between CCM and simulator
 //buff[0] represent the component ack (componentSignal)
@@ -5584,10 +5584,10 @@ void *skill1Fsm(void *threadid)
 #ifdef SIMULATE_CHIARA
 			cmdToComp = getGoToFuncName(_messageToCCM_GoTo[0]);
 			dest = "kitchen";
-			printf("From     : /%s/%s\n", funcName, dest);
-			printf("To       : /%s\n", componentName);
-			printf("Command  : %s\n", cmdToComp);
-			printf("Arguments: %s\n", dest);
+			printf("From     : /%s/%s\nTo       : /%s\nCommand  : %s\nArguments: %s\n", funcName, dest, componentName, cmdToComp, dest);
+			// printf("To       : /%s\n", componentName);
+			// printf("Command  : %s\n", cmdToComp);
+			// printf("Arguments: %s\n", dest);
 			fflush(stdout);
 #endif
 			// signal the SCM in order to forward the stop command
@@ -6002,10 +6002,10 @@ void *skill4Fsm(void *threadid)
 #ifdef SIMULATE_CHIARA
 			cmdToComp = getGoToFuncName(_messageToCCM_GoTo[0]);
 			dest = "charging_station";
-			printf("From     : /%s/%s\n", funcName, dest);
-			printf("To       : /%s\n", componentName);
-			printf("Command  : %s\n", cmdToComp);
-			printf("Arguments: %s\n", dest);
+			printf("From     : /%s/%s\nTo       : /%s\nCommand  : %s\nArguments: %s\n", funcName, dest, componentName, cmdToComp, dest);
+			// printf("To       : /%s\n", componentName);
+			// printf("Command  : %s\n", cmdToComp);
+			// printf("Arguments: %s\n", dest);
 			fflush(stdout);
 #endif
 			// signal the SCM in order to forward the stop command
@@ -7332,6 +7332,10 @@ void *ccmGoToExecution(void *threadid)
 			}
 			else if (_cmdFromSkill == halt)
 			{
+#ifdef SIMULATE
+			printf("				%s  AN HALT ARRIVED FROM A SKILL\n", funcName);
+			fflush(stdout);
+#endif				
 				_simulatorCmd = stop_navigation;
 				currentCCM_GoToComponentState = CCM_ACT_STOPPING;
 			}
@@ -7348,9 +7352,16 @@ void *ccmGoToExecution(void *threadid)
 			break;
 
 		case CCM_ACT_STARTING:
+		;
 #ifdef SIMULATE
 			printf("				%s  state = CCM_ACT_STARTING\n", funcName);
 			fflush(stdout);
+#endif
+#ifdef SIMULATE_CHIARA
+				const char *skillDest1 = getDestinationName(_skillDestination);
+				const char *sigSkillCmdS = getGoToFuncName(_cmdFromSkill);
+				printf("From     : /%s\nTo       : /%s/%s\nReply    : %s\nArguments: %s \n", funcName, skillName1, toLower(skillDest1, strlen(skillDest1)), sigSkillCmdS, toLower(skillDest1, strlen(skillDest1)));
+				fflush(stdout);
 #endif
 			//send start_navigation to the component
 			pthread_mutex_lock(&mutexCCM_GoToToNavigation);
@@ -7366,6 +7377,7 @@ void *ccmGoToExecution(void *threadid)
 			printf("				%s  simulator has been received start_navigation command\n", funcName);
 			fflush(stdout);
 #endif
+
 			//simulator has been received start_navigation command
 			currentCCM_GoToComponentState = CCM_ACT_IDLE;
 			pthread_yield();
@@ -7376,6 +7388,12 @@ void *ccmGoToExecution(void *threadid)
 #ifdef SIMULATE
 			printf("				%s  state = CCM_ACT_STOPPING\n", funcName);
 			fflush(stdout);
+#endif
+#ifdef SIMULATE_CHIARA
+				skillDest1 = getDestinationName(_skillDestination);
+				sigSkillCmdS = getGoToFuncName(_cmdFromSkill);
+				printf("From     : /%s\nTo       : /%s/%s\nReply    : %s\nArguments: %s \n", funcName, skillName1, toLower(skillDest1, strlen(skillDest1)), sigSkillCmdS, toLower(skillDest1, strlen(skillDest1)));
+				fflush(stdout);
 #endif
 			//send stop_navigation to the component
 			pthread_mutex_lock(&mutexCCM_GoToToNavigation);
@@ -7907,6 +7925,12 @@ void *refreshExecution(void *threadid)
 		//read the command value from CCM_GoTo
 		_simulatorCmd = getNavigationCommand(bufferCCM_GoToToNavigation);
 		_actualDestination = getDestination(bufferCCM_GoToToNavigation);
+#ifdef SIMULATE
+		const char *_dName = getDestinationName(_actualDestination);
+		const char *_sName = getNavigationCommandName(_simulatorCmd);
+		printf("						%s Refresh Data _actualDestination = %s --_simulatorCmd = %s\n", funcName, _dName, _sName);
+		fflush(stdout);
+#endif
 		//reset the buffer values
 		resetNavigationCmdValue(bufferCCM_GoToToNavigation);
 		pthread_mutex_unlock(&mutexCCM_GoToToNavigation);
@@ -7917,6 +7941,10 @@ void *refreshExecution(void *threadid)
 
 			if (simInfo.currentDestination == ABSENT_LOCATION)
 			{
+#ifdef SIMULATE
+		printf("						%s Refresh Data --> simInfo.currentDestination == ABSENT_LOCATION\n", funcName);
+		fflush(stdout);
+#endif
 				// il robot e' fermo (nessuna destinazione impostata)
 				simInfo.currentDestination = _actualDestination;
 				currentSimLocation = _actualDestination;
@@ -7926,6 +7954,10 @@ void *refreshExecution(void *threadid)
 			}
 			else if (simInfo.currentDestination != _actualDestination)
 			{
+#ifdef SIMULATE
+		printf("						%s Refresh Data --> simInfo.currentDestination != _actualDestination\n", funcName);
+		fflush(stdout);
+#endif
 				// la destinazione e' diversa da quella salvata
 				simInfo.currentDestination = _actualDestination;
 				currentSimLocation = _actualDestination;
@@ -7937,9 +7969,16 @@ void *refreshExecution(void *threadid)
 		}
 		else if (_simulatorCmd == stop_navigation)
 		{
-
-			if (simInfo.currentDestination == _actualDestination)
+			// modificato: in principio era solo:  simInfo.currentDestination == _actualDestination
+			// aggiunta condizione che dovrebbe gnorare lo stop se è a destinazione
+			// e modificare la current destination de viene inviata una nuova destinazione
+			if ((simInfo.currentDestination == _actualDestination && simInfo.isArrived == false) ||
+			    (simInfo.currentDestination != _actualDestination && simInfo.isArrived == true))
 			{
+#ifdef SIMULATE
+		printf("						%s Refresh Data --> simInfo.currentDestination == _actualDestination\n", funcName);
+		fflush(stdout);
+#endif
 				simInfo.currentDestination = ABSENT_LOCATION;
 				simInfo.isArrived = false;
 				navigationCompSharedBuffer[0] = COMP_OK;
@@ -7994,7 +8033,7 @@ void *refreshExecution(void *threadid)
 		else
 		{
 #ifdef SIMULATE
-			printf("						%s simInfo.atChargingStation == 1\n", funcName);
+			printf("						%s simInfo.atChargingStation == 1 (else BATTERY LEVEL), %d\n", funcName, simInfo.currentDestination);
 			fflush(stdout);
 #endif
 			//if the robot is at charging station increase the battery level
@@ -8010,7 +8049,7 @@ void *refreshExecution(void *threadid)
 		if (simInfo.atChargingStation == 1 && simInfo.batteryLevel < 1000)
 		{
 #ifdef SIMULATE
-			printf("						%s simInfo.atChargingStation == 1 && simInfo.batteryLevel < 100\n", funcName);
+			printf("						%s simInfo.atChargingStation == 1 && simInfo.batteryLevel < 100 BATTERY STATUS\n", funcName);
 			fflush(stdout);
 #endif
 			batteryCompSharedBufferStatus[0] = COMP_OK;
@@ -8040,7 +8079,7 @@ void *refreshExecution(void *threadid)
 		else if (simInfo.atChargingStation == 1 && simInfo.currentDestination == CHARGING_STATION)
 		{
 #ifdef SIMULATE
-			printf("						%s simInfo.atChargingStation == 1\n", funcName);
+			printf("						%s simInfo.atChargingStation == 1 (and CHARGING STATION)\n", funcName);
 			fflush(stdout);
 #endif
 			navigationCompSharedBuffer[0] = COMP_OK;
@@ -8072,7 +8111,7 @@ void *refreshExecution(void *threadid)
 		else
 		{
 #ifdef SIMULATE
-			printf("						%s ELSE\n", funcName);
+			printf("						%s ELSE simInfo.atChargingStation == %d\n", funcName, simInfo.atChargingStation);
 			fflush(stdout);
 #endif
 			navigationCompSharedBuffer[0] = COMP_OK;
@@ -8087,7 +8126,7 @@ void *refreshExecution(void *threadid)
 	}
 }
 
-void *componentExecution(void *threadid)
+/* void *componentExecution(void *threadid)
 {
 	//variable representing command to navigator
 	static NavigationCommand _simulatorCmd = navigation_absentCmd;
@@ -8417,7 +8456,7 @@ void *componentExecution(void *threadid)
 		usleep(10000);
 	}
 }
-
+ */
 int main(int argc, char *argv[])
 {
 	// if (argc != 2)

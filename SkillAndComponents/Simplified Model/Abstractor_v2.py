@@ -12,11 +12,11 @@ q2 = Query(input = "getStatus_ki_input",output=("output_getStatus_ki_ab","output
 
 q3 = Query(input = "halt_ki_input",output="output_halt_ki",last = "None")
 
-q4 = Query(input = "isAt_ki_input",output=("output_isAt_ki_not","output_isAt_ki_run"),last = "None")
+q4 = Query(input = "isAt_ki_input",output=("output_isAt_ki_false","output_isAt_ki_true"),last = "None")
 
 q5 = Query(input = "batteryStatus_input",output=("output_batteryStatus_false","output_batteryStatus_true"),last = "None")
 
-q6 = Query(input = "level_input",output=("output_level_normal","output_level_low"),last = "None")
+q6 = Query(input = "level_input",output=("output_level_low","output_level_medium","output_level_high","output_level_zero"),last = "None")
 
 q7 = Query(input = "goTo_ch_input",output="output_goto_ch",last = "None")
 
@@ -24,7 +24,7 @@ q8 = Query(input = "getStatus_ch_input",output=("output_getStatus_ch_ab","output
 
 q9 = Query(input = "halt_ch_input",output="output_halt_ch",last = "None")
 
-q10 = Query(input = "isAt_ch_input",output=("output_isAt_ch_not","output_isAt_ch_run"),last = "None")
+q10 = Query(input = "isAt_ch_input",output=("output_isAt_ch_false","output_isAt_ch_true"),last = "None")
 
 
 f = open('Traces.txt', 'r')
@@ -50,6 +50,7 @@ for i in range(0,len(log)):
                 new_log.append(log[index_temp])
                 new_log.append(log[j])
                 q1.last = q1.output
+                q3.last = "None"
 
 
     if log[i] == q3.input :
@@ -73,6 +74,7 @@ for i in range(0,len(log)):
                 new_log.append(log[index_temp])
                 new_log.append(log[j])
                 q7.last = q7.output
+                q9.last = "None"
 
     if log[i] == q9.input :
         index_temp = i
@@ -82,7 +84,7 @@ for i in range(0,len(log)):
                 indexes.append(j)
                 new_log.append(log[index_temp])
                 new_log.append(log[j])
-                q9.last = q3.output
+                q9.last = q9.output
                 q7.last = "None"
                 q8.last = "None"
     

@@ -16,7 +16,7 @@ def Convert(string):
     return li
 
 
-path = 'graph_simulator'
+path = 'graph_simulator_B'
 s = Source.from_file(path)
 with open("Transitions.txt", "w") as text_file:
     text_file.write(s.source)

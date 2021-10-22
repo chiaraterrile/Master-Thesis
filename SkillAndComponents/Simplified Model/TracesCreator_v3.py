@@ -58,21 +58,22 @@ x = x.replace("From     : /GoToIsAtClient/charging_station\nTo       : /GoToComp
 x = x.replace("From     : /GoToGoToClient/charging_station\nTo       : /GoToComponent\nCommand  : halt\nArguments: charging_station", "halt_ch_input\n")
 
 #OUTPUT messages
-x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/kitchen\nReply    : goTo\nArguments: kitchen", "output_goto_ki")
+x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/kitchen\nReply    : goTo\nArguments: kitchen", "output_goto_ki\n")
 x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/kitchen\nReply    : getStatus\nArguments: kitchen 1", "output_getStatus_ki_run\n")
 x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/kitchen\nReply    : getStatus\nArguments: kitchen 2", "output_getStatus_ki_suc\n")
 x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/kitchen\nReply    : getStatus\nArguments: kitchen 3", "output_getStatus_ki_ab\n")
-x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/kitchen\nReply    : halt\nArguments: kitchen", "output_halt_ki")
+x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/kitchen\nReply    : halt\nArguments: kitchen", "output_halt_ki\n")
 x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/charging_station\nReply    : goTo\nArguments: charging_station", "output_goto_ch\n")
 x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/charging_station\nReply    : getStatus\nArguments: charging_station 1", "output_getStatus_ch_run\n")
 x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/charging_station\nReply    : getStatus\nArguments: charging_station 2", "output_getStatus_ch_suc\n")
 x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/charging_station\nReply    : getStatus\nArguments: charging_station 3", "output_getStatus_ch_ab\n")
 x = x.replace("From     : /BatteryComponent\nTo       : /BatteryReaderBatteryNotChargingClient\nReply    : charging_status\nArguments: 0", "output_batteryStatus_false\n")
 x = x.replace("From     : /BatteryComponent\nTo       : /BatteryReaderBatteryNotChargingClient\nReply    : charging_status\nArguments: 1", "output_batteryStatus_true\n")
-x = x.replace("From     : /GoToComponent\nTo       : /GoToIsAtClient/kitchen\nReply    : isAtLocation\nArguments: kitchen 0", "output_isAt_ki_not\n")
-x = x.replace("From     : /GoToComponent\nTo       : /GoToIsAtClient/kitchen\nReply    : isAtLocation\nArguments: kitchen 1", "output_isAt_ki_run\n")
-x = x.replace("From     : /GoToComponent\nTo       : /GoToIsAtClient/charging_station\nReply    : isAtLocation\nArguments: charging_station 0", "output_isAt_ch_not\n")
-x = x.replace("From     : /GoToComponent\nTo       : /GoToIsAtClient/charging_station\nReply    : isAtLocation\nArguments: charging_station 1", "output_isAt_ch_run\n")
+x = x.replace("From     : /GoToComponent\nTo       : /GoToIsAtClient/kitchen\nReply    : isAtLocation\nArguments: kitchen 0", "output_isAt_ki_false\n")
+x = x.replace("From     : /GoToComponent\nTo       : /GoToIsAtClient/kitchen\nReply    : isAtLocation\nArguments: kitchen 1", "output_isAt_ki_true\n")
+x = x.replace("From     : /GoToComponent\nTo       : /GoToIsAtClient/charging_station\nReply    : isAtLocation\nArguments: charging_station 0", "output_isAt_ch_false\n")
+x = x.replace("From     : /GoToComponent\nTo       : /GoToIsAtClient/charging_station\nReply    : isAtLocation\nArguments: charging_station 1", "output_isAt_ch_true\n")
+x = x.replace("From     : /GoToComponent\nTo       : /GoToGoToClient/charging_station\nReply    : halt\nArguments: charging_station", "output_halt_ch\n")
 
 #remove "DEBUG		Message received:" message
 x = x.replace("DEBUG", " ")
@@ -95,9 +96,13 @@ for line in x.splitlines():
 
 for i in range(0, len(arr)):
     if int(arr[i])>300 :
-        arr[i]= 'normal'
-    elif 1<int(arr[i])<300 :
+        arr[i]= 'high'
+    elif 200<int(arr[i])<300 :
+        arr[i]= 'medium'
+    elif 1<int(arr[i])<200 :
         arr[i]= 'low'
+    elif int(arr[i]) == 0 :
+        arr[i]= 'zero'
 print(arr)
 
 for i in range(counter_level):
