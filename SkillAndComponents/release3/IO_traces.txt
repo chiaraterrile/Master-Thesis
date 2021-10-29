@@ -1,8 +1,14 @@
-level_i/OK
-Delta/o_level_normal
 batteryStatus_i/OK
 Delta/o_batteryStatus_false
 isAt_ki_i/OK
-Delta/o_isAt_ki_not
+Delta/o_isAt_ki_false
+goTo_ki_i/OK
+level_i/OK
+Delta/o_level_high
+Delta/o_goto_ki
 getStatus_ki_i/OK
 Delta/o_getStatus_ki_run
+isAt_ki_i/OK
+Delta/o_isAt_ki_true
+halt_ki_i/OK
+Delta/o_halt_ki

@@ -111,8 +111,6 @@ for i in range(0, len(arr)):
         arr[i]= 'medium'
     elif 1<int(arr[i])<20 :
         arr[i]= 'low'
-    elif int(arr[i]) == 0 :
-        arr[i]= 'zero'
 print(arr)
 
 for i in range(counter_level):

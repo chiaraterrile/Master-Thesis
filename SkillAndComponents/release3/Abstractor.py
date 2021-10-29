@@ -47,6 +47,7 @@ for i in range(0,len(log)):
                 indexes.append(index_temp)
                 indexes.append(j)
                 q1.last = q1.output
+                q3.last = "None"
 
     if log[i] == q3.input :
         index_temp = i
@@ -57,6 +58,7 @@ for i in range(0,len(log)):
                 q3.last = q3.output
                 q1.last = "None"
                 q2.last = "None"
+             
 
     if log[i] == q7.input :
         index_temp = i
@@ -65,6 +67,7 @@ for i in range(0,len(log)):
                 indexes.append(index_temp)
                 indexes.append(j)
                 q7.last = q7.output
+                q9.last = "None"
 
     if log[i] == q9.input :
         index_temp = i
@@ -75,6 +78,7 @@ for i in range(0,len(log)):
                 q9.last = q9.output
                 q7.last = "None"
                 q8.last = "None"
+                
     
     
     if log[i] == q2.input :

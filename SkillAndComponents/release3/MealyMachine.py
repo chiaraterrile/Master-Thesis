@@ -67,7 +67,7 @@ def convert_fromCh_toSt(s):
     return new
 
 
-f = open('Mealy.txt', 'r')
+f = open('MealyB.txt', 'r')
 x = f.read()
 
 mealy = eval(x)

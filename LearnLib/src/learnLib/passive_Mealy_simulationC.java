@@ -38,9 +38,9 @@ import net.automatalib.visualization.Visualization;
 import net.automatalib.words.impl.Alphabets;
 
 
-public final class passive_Mealy_release3 {
+public final class passive_Mealy_simulationC {
 
-    private passive_Mealy_release3() {
+    private passive_Mealy_simulationC() {
         // prevent instantiation
     }
 
@@ -77,9 +77,9 @@ public final class passive_Mealy_release3 {
     	List <ArrayList<String>> input_pre = new ArrayList<ArrayList<String>>();
     	List<ArrayList<String>> output = new ArrayList<ArrayList<String>>();
     	
-    	for (int i = 0; i < 4; i++) {
+    	for (int i = 0; i < 14; i++) {
     		
-    		s.add(i,new Scanner(new File("release3A/input_release3_nominal"+(i+1)+".txt")));
+    		s.add(i,new Scanner(new File("simulatorC-neg/input_simulator_neg"+(i+1)+".txt")));
     		ArrayList<String> input_list = new ArrayList<String>();
     		while (s.get(i).hasNext()){
         		
@@ -89,7 +89,7 @@ public final class passive_Mealy_release3 {
         	s.get(i).close();
         	
         	
-        	s1.add(new Scanner(new File("release3A/output_release3_nominal"+(i+1)+".txt")));
+        	s1.add(new Scanner(new File("simulatorC-neg/output_simulator_neg"+(i+1)+".txt")));
         	ArrayList<String> output_list = new ArrayList<String>();
         	while (s1.get(i).hasNext()){
         		
@@ -105,10 +105,22 @@ public final class passive_Mealy_release3 {
     	return Arrays.asList( new DefaultQuery<>(Word.fromList(input_pre.get(0)),Word.fromSymbols("Delta"),Word.fromList(output.get(0))),
     			new DefaultQuery<>(Word.fromList(input_pre.get(1)),Word.fromSymbols("Delta"),Word.fromList(output.get(1))),
     			new DefaultQuery<>(Word.fromList(input_pre.get(2)),Word.fromSymbols("Delta"),Word.fromList(output.get(2))),
-    			new DefaultQuery<>(Word.fromList(input_pre.get(3)),Word.fromSymbols("Delta"),Word.fromList(output.get(3)))
-    			/*new DefaultQuery<>(Word.fromList(input_pre.get(4)),Word.fromSymbols("Delta"),Word.fromList(output.get(4))),
-    			new DefaultQuery<>(Word.fromList(input_pre.get(5)),Word.fromSymbols("Delta"),Word.fromList(output.get(5)))
+    			new DefaultQuery<>(Word.fromList(input_pre.get(3)),Word.fromSymbols("Delta"),Word.fromList(output.get(3))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(4)),Word.fromSymbols("Delta"),Word.fromList(output.get(4))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(5)),Word.fromSymbols("Delta"),Word.fromList(output.get(5))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(6)),Word.fromSymbols("Delta"),Word.fromList(output.get(6))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(7)),Word.fromSymbols("Delta"),Word.fromList(output.get(7))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(8)),Word.fromSymbols("Delta"),Word.fromList(output.get(8))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(9)),Word.fromSymbols("Delta"),Word.fromList(output.get(9))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(10)),Word.fromSymbols("Delta"),Word.fromList(output.get(10))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(11)),Word.fromSymbols("Delta"),Word.fromList(output.get(11))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(12)),Word.fromSymbols("Delta"),Word.fromList(output.get(12))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(13)),Word.fromSymbols("Delta"),Word.fromList(output.get(13)))
+    			/*new DefaultQuery<>(Word.fromList(input_pre.get(14)),Word.fromSymbols("Delta"),Word.fromList(output.get(14))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(15)),Word.fromSymbols("Delta"),Word.fromList(output.get(15))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(16)),Word.fromSymbols("Delta"),Word.fromList(output.get(16)))
     			*/
+    			
     			
     			
     			);

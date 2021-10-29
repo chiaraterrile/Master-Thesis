@@ -77,7 +77,7 @@ public final class passive_Mealy_simulationB {
     	List <ArrayList<String>> input_pre = new ArrayList<ArrayList<String>>();
     	List<ArrayList<String>> output = new ArrayList<ArrayList<String>>();
     	
-    	for (int i = 0; i < 17; i++) {
+    	for (int i = 0; i < 21; i++) {
     		
     		s.add(i,new Scanner(new File("simulatorB/input_simulator_nominal"+(i+1)+".txt")));
     		ArrayList<String> input_list = new ArrayList<String>();
@@ -118,8 +118,11 @@ public final class passive_Mealy_simulationB {
     			new DefaultQuery<>(Word.fromList(input_pre.get(13)),Word.fromSymbols("Delta"),Word.fromList(output.get(13))),
     			new DefaultQuery<>(Word.fromList(input_pre.get(14)),Word.fromSymbols("Delta"),Word.fromList(output.get(14))),
     			new DefaultQuery<>(Word.fromList(input_pre.get(15)),Word.fromSymbols("Delta"),Word.fromList(output.get(15))),
-    			new DefaultQuery<>(Word.fromList(input_pre.get(16)),Word.fromSymbols("Delta"),Word.fromList(output.get(16)))
-    			
+    			new DefaultQuery<>(Word.fromList(input_pre.get(16)),Word.fromSymbols("Delta"),Word.fromList(output.get(16))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(17)),Word.fromSymbols("Delta"),Word.fromList(output.get(17))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(18)),Word.fromSymbols("Delta"),Word.fromList(output.get(18))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(19)),Word.fromSymbols("Delta"),Word.fromList(output.get(19))),
+    			new DefaultQuery<>(Word.fromList(input_pre.get(20)),Word.fromSymbols("Delta"),Word.fromList(output.get(20)))
     			
     			
     			

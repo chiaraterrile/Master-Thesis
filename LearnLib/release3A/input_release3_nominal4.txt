@@ -9,6 +9,5 @@ Delta
 getStatus_ki_i
 Delta
 isAt_ki_i
-Delta
 halt_ki_i
 Delta

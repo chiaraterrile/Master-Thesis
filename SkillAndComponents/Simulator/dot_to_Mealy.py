@@ -16,7 +16,7 @@ def Convert(string):
     return li
 
 
-path = 'graph_release3B'
+path = 'graph_simulator_B'
 s = Source.from_file(path)
 with open("Transitions.txt", "w") as text_file:
     text_file.write(s.source)
@@ -73,7 +73,6 @@ input_lines = RemoveEmptyLines(input_lines)
 input_lines = Convert(input_lines)
 input_lines = input_lines[:-1]
 new_input_lines = list(dict.fromkeys(input_lines))
-
 output_lines = RemoveEmptyLines(output_lines)
 output_lines = Convert(output_lines)
 output_lines = output_lines[:-1]
@@ -106,6 +105,7 @@ next_state = Convert(next_state)
 start_state = next_state[len(next_state)-2]
 next_state = next_state[:-3]
 
+
 i = 0
 while i < (len(prec_state)-1) :
     if prec_state[i]!= prec_state[i+1] :
@@ -133,5 +133,5 @@ for i in range (0,n_states) :
     mealy = mealy.replace('s'+str(i),str(i))
 
 
-with open("MealyB.txt", "w") as text_file:
+with open("Mealy_B.txt", "w") as text_file:
     text_file.write(mealy)
