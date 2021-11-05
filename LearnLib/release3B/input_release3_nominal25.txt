@@ -1,6 +1,6 @@
 level_i
-batteryStatus_i
 Delta
+batteryStatus_i
 isAt_ki_i
 Delta
 goTo_ki_i
@@ -9,6 +9,7 @@ Delta
 getStatus_ki_i
 Delta
 level_i
+Delta
 isAt_ch_i
 Delta
 halt_ki_i
@@ -17,6 +18,18 @@ goTo_ch_i
 Delta
 level_i
 Delta
+isAt_ch_i
 Delta
 level_i
+batteryStatus_i
 Delta
+batteryStatus_i
+Delta
+goTo_ki_i
+Delta
+Delta
+getStatus_ki_i
+Delta
+isAt_ki_i
+Delta
+halt_ki_i

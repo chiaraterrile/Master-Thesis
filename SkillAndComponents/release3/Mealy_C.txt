@@ -1,0 +1,100 @@
+Mealy(['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'],
+['Delta','batteryStatus_i','level_i','goTo_ch_i','isAt_ch_i','goTo_ki_i','halt_ki_i','getStatus_ki_i','isAt_ki_i'],
+['o_goto_ki','o_batteryStatus_false','o_getStatus_ki_run','o_halt_ki','o_level_zero','o_isAt_ch_false','o_goto_ch','o_level_low','OK','o_level_medium','o_isAt_ki_false','o_level_high'],
+{
+	'0' : {
+		'Delta' : ('17','o_goto_ki')
+	},
+	'1' : {
+		'Delta' : ('13','o_batteryStatus_false')
+	},
+	'2' : {
+		'Delta' : ('17','o_getStatus_ki_run')
+	},
+	'3' : {
+		'Delta' : ('17','o_halt_ki')
+	},
+	'4' : {
+		'Delta' : ('17','o_level_zero')
+	},
+	'5' : {
+		'Delta' : ('17','o_isAt_ch_false')
+	},
+	'6' : {
+		'Delta' : ('7','o_goto_ch')
+	},
+	'7' : {
+		'Delta' : ('9','o_level_low')
+	},
+	'8' : {
+		'Delta' : ('16','o_goto_ki'),
+		'batteryStatus_i':('9','OK'),
+		},
+	'9' : {
+		'Delta' : ('16','o_batteryStatus_false'),
+		'level_i':('4','OK'),
+		},
+	'10' : {
+		'Delta' : ('11','o_level_medium'),
+		'level_i':('15','OK'),
+		'goTo_ch_i':('10','OK'),
+		},
+	'11' : {
+		'Delta' : ('15','o_goto_ch'),
+		'level_i':('6','OK'),
+		'goTo_ch_i':('11','OK'),
+		},
+	'12' : {
+		'Delta' : ('17','o_isAt_ki_false'),
+		'level_i':('15','OK'),
+		'isAt_ch_i':('20','OK'),
+		},
+	'13' : {
+		'Delta' : ('8','o_level_high'),
+		'goTo_ki_i':('13','OK'),
+		'level_i':('13','OK'),
+		'batteryStatus_i':('1','OK'),
+		},
+	'14' : {
+		'Delta' : ('13','o_isAt_ki_false'),
+		'level_i':('7','OK'),
+		'goTo_ch_i':('11','OK'),
+		'isAt_ch_i':('5','OK'),
+		},
+	'15' : {
+		'Delta' : ('14','o_level_medium'),
+		'level_i':('7','OK'),
+		'halt_ki_i':('18','OK'),
+		'goTo_ch_i':('10','OK'),
+		'isAt_ch_i':('20','OK'),
+		},
+	'16' : {
+		'Delta' : ('17','o_batteryStatus_false'),
+		'goTo_ki_i':('16','OK'),
+		'level_i':('16','OK'),
+		'getStatus_ki_i':('19','OK'),
+		'batteryStatus_i':('9','OK'),
+		'isAt_ki_i':('12','OK'),
+		},
+	'17' : {
+		'Delta' : ('16','o_level_high'),
+		'goTo_ki_i':('0','OK'),
+		'level_i':('17','OK'),
+		'getStatus_ki_i':('2','OK'),
+		'halt_ki_i':('3','OK'),
+		'goTo_ch_i':('11','OK'),
+		'batteryStatus_i':('16','OK'),
+		'isAt_ki_i':('14','OK'),
+		'isAt_ch_i':('5','OK'),
+		},
+	'18' : {
+		'Delta' : ('10','o_halt_ki')
+	},
+	'19' : {
+		'Delta' : ('12','o_getStatus_ki_run')
+	},
+	'20' : {
+		'Delta' : ('15','o_isAt_ch_false')
+	}
+},
+'17')

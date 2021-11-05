@@ -15,8 +15,8 @@ OK
 o_halt_ki
 OK
 o_level_medium
-OK
 o_goto_ch
+OK
 o_level_low
 OK
 o_level_zero

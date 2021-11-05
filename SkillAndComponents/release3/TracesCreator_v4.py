@@ -75,7 +75,7 @@ x = x.replace("From      : /GoToComponent\nTo        : /GoToGoToClient/charging_
 x = x.replace("From      : /GoToComponent\nTo        : /GoToGoToClient/charging_station\nProtocol  : GoTo\nCommand   : getStatus\nArguments : charging_station\nReply     : 2", "output_getStatus_ch_suc\n")
 x = x.replace("From      : /GoToComponent\nTo        : /GoToGoToClient/charging_station\nProtocol  : GoTo\nCommand   : getStatus\nArguments : charging_station\nReply     : 3", "output_getStatus_ch_ab\n")
 x = x.replace("From      : /BatteryComponent\nTo        : /BatteryReaderBatteryNotChargingClient\nProtocol  : BatteryReader\nCommand   : charging_status\nArguments : \nReply     : 0", "output_batteryStatus_false\n")
-x = x.replace("From     : /BatteryComponent\nTo       : /BatteryReaderBatteryNotChargingClient\nReply    : charging_status\nArguments: 1", "output_batteryStatus_true")
+x = x.replace("From      : /BatteryComponent\nTo        : /BatteryReaderBatteryNotChargingClient\nProtocol  : BatteryReader\nCommand   : charging_status\nArguments : \nReply     : 1", "output_batteryStatus_true")
 x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/kitchen\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : kitchen\nReply     : 1818845542", "output_isAt_ki_false\n")
 x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/kitchen\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : kitchen\nReply     : 27503", "output_isAt_ki_true\n")
 x = x.replace("From      : /GoToComponent\nTo        : /GoToIsAtClient/charging_station\nProtocol  : GoTo\nCommand   : isAtLocation\nArguments : charging_station\nReply     : 1818845542", "output_isAt_ch_false\n")
@@ -111,6 +111,9 @@ for i in range(0, len(arr)):
         arr[i]= 'medium'
     elif 1<int(arr[i])<20 :
         arr[i]= 'low'
+    elif int(arr[i]) == 0 :
+    	arr[i]= 'zero'
+    
 print(arr)
 
 for i in range(counter_level):

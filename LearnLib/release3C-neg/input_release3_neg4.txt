@@ -15,8 +15,7 @@ halt_ki_i
 Delta
 goTo_ch_i
 Delta
-level_i
-Delta
 Delta
 level_i
 Delta
+level_i

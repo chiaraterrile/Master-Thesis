@@ -1,9 +1,9 @@
-level_i
-batteryStatus_i
-Delta
 isAt_ki_i
 Delta
 goTo_ki_i
+level_i
+batteryStatus_i
+Delta
 Delta
 Delta
 getStatus_ki_i
@@ -15,8 +15,7 @@ halt_ki_i
 Delta
 goTo_ch_i
 Delta
-level_i
-Delta
 Delta
 level_i
 Delta
+level_i

@@ -1,11 +1,9 @@
 OK
-OK
-o_batteryStatus_false
-OK
 o_isAt_ki_false
 OK
 o_level_high
-o_goto_ki
+OK
+o_batteryStatus_false
 OK
 o_getStatus_ki_run
 OK
