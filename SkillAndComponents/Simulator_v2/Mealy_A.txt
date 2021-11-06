@@ -1,0 +1,49 @@
+Mealy(['0','1','2','3','4','5','6','7','8','9'],
+['Delta','getStatus_ki_i','isAt_ki_i','goTo_ki_i','level_i','batteryStatus_i'],
+['o_getStatus_ki_suc','o_getStatus_ki_run','o_isAt_ki_true','o_goto_ki','OK','o_isAt_ki_false','o_getStatus_ki_ab','o_batteryStatus_false','o_level_high'],
+{
+	'0' : {
+		'Delta' : ('6','o_getStatus_ki_suc')
+	},
+	'1' : {
+		'Delta' : ('7','o_getStatus_ki_run')
+	},
+	'2' : {
+		'Delta' : ('0','o_isAt_ki_true')
+	},
+	'3' : {
+		'Delta' : ('8','o_goto_ki'),
+		'getStatus_ki_i':('6','OK'),
+		},
+	'4' : {
+		'Delta' : ('8','o_isAt_ki_false'),
+		'getStatus_ki_i':('1','OK'),
+		},
+	'5' : {
+		'Delta' : ('4','o_getStatus_ki_ab'),
+		'getStatus_ki_i':('7','OK'),
+		},
+	'6' : {
+		'Delta' : ('8','o_batteryStatus_false'),
+		'getStatus_ki_i':('9','OK'),
+		'isAt_ki_i':('2','OK'),
+		},
+	'7' : {
+		'Delta' : ('1','o_getStatus_ki_ab'),
+		'getStatus_ki_i':('0','OK'),
+		'isAt_ki_i':('9','OK'),
+		},
+	'8' : {
+		'Delta' : ('8','o_level_high'),
+		'goTo_ki_i':('3','OK'),
+		'level_i':('8','OK'),
+		'getStatus_ki_i':('5','OK'),
+		'batteryStatus_i':('6','OK'),
+		'isAt_ki_i':('4','OK'),
+		},
+	'9' : {
+		'Delta' : ('7','o_goto_ki'),
+		'getStatus_ki_i':('2','OK')
+		}
+},
+'8')

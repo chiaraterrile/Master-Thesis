@@ -1,0 +1,160 @@
+Mealy(['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36'],
+['Delta','level_i','isAt_ch_i','halt_ki_i','getStatus_ch_i','getStatus_ki_i','goTo_ch_i','goTo_ki_i','batteryStatus_i','isAt_ki_i'],
+['o_goto_ki','o_level_medium_six','o_halt_ki','o_isAt_ch_false','o_level_low','o_goto_ch','o_level_medium_four','o_level_medium_three','o_getStatus_ki_ab','o_getStatus_ch_ab','o_getStatus_ki_run','o_getStatus_ch_run','o_level_medium_two','o_level_medium_one','o_level_medium_five','OK','o_isAt_ki_false','o_batteryStatus_false','o_level_high'],
+{
+	'0' : {
+		'Delta' : ('8','o_goto_ki')
+	},
+	'1' : {
+		'Delta' : ('24','o_level_medium_six')
+	},
+	'2' : {
+		'Delta' : ('25','o_halt_ki')
+	},
+	'3' : {
+		'Delta' : ('28','o_isAt_ch_false')
+	},
+	'4' : {
+		'Delta' : ('28','o_level_low')
+	},
+	'5' : {
+		'Delta' : ('19','o_goto_ch')
+	},
+	'6' : {
+		'Delta' : ('30','o_level_medium_four')
+	},
+	'7' : {
+		'Delta' : ('21','o_level_medium_three')
+	},
+	'8' : {
+		'Delta' : ('10','o_getStatus_ki_ab')
+	},
+	'9' : {
+		'Delta' : ('35','o_getStatus_ch_ab')
+	},
+	'10' : {
+		'Delta' : ('15','o_getStatus_ki_run')
+	},
+	'11' : {
+		'Delta' : ('14','o_getStatus_ch_run')
+	},
+	'12' : {
+		'Delta' : ('20','o_level_medium_two')
+	},
+	'13' : {
+		'Delta' : ('16','o_level_medium_one')
+	},
+	'14' : {
+		'Delta' : ('25','o_level_medium_five'),
+		'level_i':('14','OK'),
+		},
+	'15' : {
+		'Delta' : ('27','o_getStatus_ki_run'),
+		'level_i':('17','OK'),
+		},
+	'16' : {
+		'Delta' : ('15','o_getStatus_ki_ab'),
+		'level_i':('4','OK'),
+		},
+	'17' : {
+		'Delta' : ('35','o_level_medium_six'),
+		'isAt_ch_i':('36','OK'),
+		},
+	'18' : {
+		'Delta' : ('24','o_goto_ch'),
+		'halt_ki_i':('31','OK'),
+		},
+	'19' : {
+		'Delta' : ('24','o_halt_ki'),
+		'getStatus_ch_i':('19','OK'),
+		},
+	'20' : {
+		'Delta' : ('21','o_goto_ki'),
+		'level_i':('13','OK'),
+		'getStatus_ki_i':('0','OK'),
+		},
+	'21' : {
+		'Delta' : ('27','o_getStatus_ki_ab'),
+		'level_i':('12','OK'),
+		'getStatus_ki_i':('16','OK'),
+		},
+	'22' : {
+		'Delta' : ('28','o_halt_ki'),
+		'halt_ki_i':('19','OK'),
+		'getStatus_ch_i':('25','OK'),
+		},
+	'23' : {
+		'Delta' : ('22','o_goto_ch'),
+		'halt_ki_i':('29','OK'),
+		'getStatus_ch_i':('5','OK'),
+		},
+	'24' : {
+		'Delta' : ('27','o_getStatus_ch_ab'),
+		'halt_ki_i':('9','OK'),
+		'getStatus_ch_i':('1','OK'),
+		},
+	'25' : {
+		'Delta' : ('28','o_isAt_ki_false'),
+		'level_i':('6','OK'),
+		'halt_ki_i':('32','OK'),
+		'getStatus_ch_i':('32','OK'),
+		},
+	'26' : {
+		'Delta' : ('28','o_level_medium_six'),
+		'goTo_ch_i':('23','OK'),
+		'getStatus_ch_i':('11','OK'),
+		'isAt_ch_i':('34','OK'),
+		},
+	'27' : {
+		'Delta' : ('28','o_batteryStatus_false'),
+		'level_i':('26','OK'),
+		'getStatus_ki_i':('15','OK'),
+		'halt_ki_i':('35','OK'),
+		'goTo_ch_i':('17','OK'),
+		'getStatus_ch_i':('11','OK'),
+		},
+	'28' : {
+		'Delta' : ('28','o_level_high'),
+		'goTo_ki_i':('30','OK'),
+		'level_i':('28','OK'),
+		'getStatus_ki_i':('21','OK'),
+		'halt_ki_i':('22','OK'),
+		'goTo_ch_i':('33','OK'),
+		'getStatus_ch_i':('24','OK'),
+		'batteryStatus_i':('27','OK'),
+		'isAt_ki_i':('25','OK'),
+		'isAt_ch_i':('3','OK'),
+		},
+	'29' : {
+		'Delta' : ('2','o_goto_ch')
+	},
+	'30' : {
+		'Delta' : ('28','o_goto_ki'),
+		'level_i':('7','OK'),
+		'getStatus_ki_i':('20','OK'),
+		},
+	'31' : {
+		'Delta' : ('9','o_goto_ch')
+	},
+	'32' : {
+		'Delta' : ('17','o_getStatus_ch_ab')
+	},
+	'33' : {
+		'Delta' : ('28','o_goto_ch'),
+		'halt_ki_i':('23','OK'),
+		'getStatus_ch_i':('18','OK'),
+		},
+	'34' : {
+		'Delta' : ('26','o_isAt_ch_false')
+	},
+	'35' : {
+		'Delta' : ('27','o_halt_ki'),
+		'halt_ki_i':('5','OK'),
+		'getStatus_ch_i':('11','OK'),
+		'isAt_ch_i':('3','OK'),
+		},
+	'36' : {
+		'Delta' : ('27','o_isAt_ch_false')
+	}
+},
+'28')
