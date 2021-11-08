@@ -11,6 +11,6 @@ o_getStatus_ki_ab
 OK
 o_getStatus_ki_run
 OK
-o_getStatus_ki_suc
 OK
 o_isAt_ki_true
+o_getStatus_ki_suc

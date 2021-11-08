@@ -16,7 +16,7 @@ def Convert(string):
     return li
 
 
-path = 'graph_simulator_v2_C'
+path = 'graph_simulator_v2_A'
 s = Source.from_file(path)
 #with open("Transitions.txt", "w") as text_file:
  #   text_file.write(s.source)
@@ -133,5 +133,5 @@ for i in range (0,n_states) :
     mealy = mealy.replace('s'+str(i),str(i))
 
 
-with open("Mealy_C.txt", "w") as text_file:
+with open("Mealy_A.txt", "w") as text_file:
     text_file.write(mealy)

@@ -5,12 +5,14 @@ o_batteryStatus_false
 OK
 o_isAt_ki_false
 OK
-OK
-OK
 o_goto_ki
+OK
 o_getStatus_ki_ab
+OK
 o_getStatus_ki_run
 OK
 o_getStatus_ki_suc
 OK
 o_isAt_ki_true
+OK
+o_halt_ki

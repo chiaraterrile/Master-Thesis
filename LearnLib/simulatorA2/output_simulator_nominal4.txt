@@ -7,8 +7,8 @@ o_isAt_ki_false
 OK
 o_goto_ki
 OK
-OK
 o_getStatus_ki_ab
+OK
 o_getStatus_ki_run
 OK
 OK
